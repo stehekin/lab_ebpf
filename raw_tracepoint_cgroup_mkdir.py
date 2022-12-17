@@ -12,8 +12,9 @@ RAW_TRACEPOINT_PROBE(cgroup_mkdir) {
     
     struct cgroup *cgrp = (struct cgroup *)ctx->args[0];
     const char *path = (const char *)ctx->args[1];
+    const char *kname = (const char *)cgrp->kn->name;
 
-    bpf_trace_printk("path-->%s level %d", path, cgrp->level);
+    bpf_trace_printk("kname %s level %d", kname, cgrp->level);
 
 	return 0;
 }
