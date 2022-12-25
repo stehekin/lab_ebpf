@@ -1,3 +1,3 @@
 # lab-ebpf
 
-Playground to test eBPF programming..
+Playground to test eBPF...
