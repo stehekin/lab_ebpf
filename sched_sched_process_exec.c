@@ -36,8 +36,10 @@ static void show_namespace() {
 }
 
 static void show_cgid() {
-    struct task_struct *task = (struct task_struct *)bpf_get_current_task();    
-    struct cgroup_subsys_state *css= task->cgroups->subsys[cpuset_cgrp_id];
+    struct task_struct *task = (struct task_struct *)bpf_get_current_task();   
+    // It can be too early to retrieve the cgroups of subsystems other than cpuset_cgrp_id here.
+    // The kernel may reassign the task to other cgroups later. 
+    struct cgroup_subsys_state *css= task->cgroups->subsys[memory_cgrp_id];
     struct kernfs_node *kn = css->cgroup->kn;
     bpf_trace_printk("task name: %s", task->comm);
     bpf_trace_printk("cgroup level :%d id: %lu name: %s", css->cgroup->level, kn->id, kn->name);    
