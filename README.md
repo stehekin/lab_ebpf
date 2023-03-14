@@ -1,3 +1,2 @@
 # lab-ebpf
-
-Playground to test eBPF...
+bpf playground
