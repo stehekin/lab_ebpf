@@ -1,0 +1,177 @@
+bpf: Failed to load program: Permission denied
+reg type unsupported for arg#0 function tracepoint__sched__sched_process_exec#14
+0: R1=ctx(off=0,imm=0) R10=fp0
+; struct task_struct *task = (struct task_struct *)bpf_get_current_task();
+0: (85) call bpf_get_current_task#35          ; R0_w=scalar()
+1: (bf) r7 = r0                       ; R0_w=scalar(id=1) R7_w=scalar(id=1)
+2: (b7) r6 = 0                        ; R6_w=0
+; struct cgroup *cgroup = ({ typeof(struct cgroup *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct css_set *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->cgroups); _val; })->dfl_cgrp); _val; });
+3: (7b) *(u64 *)(r10 -48) = r6        ; R6_w=P0 R10=fp0 fp-48_w=00000000
+; struct cgroup *cgroup = ({ typeof(struct cgroup *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct css_set *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->cgroups); _val; })->dfl_cgrp); _val; });
+4: (7b) *(u64 *)(r10 -8) = r6         ; R6_w=P0 R10=fp0 fp-8_w=00000000
+; struct cgroup *cgroup = ({ typeof(struct cgroup *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct css_set *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->cgroups); _val; })->dfl_cgrp); _val; });
+5: (bf) r3 = r7                       ; R3_w=scalar(id=1) R7_w=scalar(id=1)
+6: (07) r3 += 3616                    ; R3_w=scalar()
+7: (bf) r1 = r10                      ; R1_w=fp0 R10=fp0
+; 
+8: (07) r1 += -8                      ; R1_w=fp-8
+; struct cgroup *cgroup = ({ typeof(struct cgroup *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct css_set *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->cgroups); _val; })->dfl_cgrp); _val; });
+9: (b7) r2 = 8                        ; R2_w=8
+10: (85) call bpf_probe_read#4        ; R0=scalar() fp-8=mmmmmmmm
+; struct cgroup *cgroup = ({ typeof(struct cgroup *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct css_set *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->cgroups); _val; })->dfl_cgrp); _val; });
+11: (79) r3 = *(u64 *)(r10 -8)        ; R3_w=scalar() R10=fp0
+; struct cgroup *cgroup = ({ typeof(struct cgroup *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct css_set *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->cgroups); _val; })->dfl_cgrp); _val; });
+12: (07) r3 += 120                    ; R3_w=scalar()
+13: (bf) r1 = r10                     ; R1_w=fp0 R10=fp0
+; 
+14: (07) r1 += -48                    ; R1_w=fp-48
+; struct cgroup *cgroup = ({ typeof(struct cgroup *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct css_set *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->cgroups); _val; })->dfl_cgrp); _val; });
+15: (b7) r2 = 8                       ; R2_w=8
+16: (85) call bpf_probe_read#4        ; R0_w=scalar() fp-48=mmmmmmmm
+; struct cgroup *cgroup = ({ typeof(struct cgroup *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct css_set *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->cgroups); _val; })->dfl_cgrp); _val; });
+17: (79) r8 = *(u64 *)(r10 -48)       ; R8_w=scalar() R10=fp0
+18: (18) r1 = 0x7325203a656d61        ; R1_w=32410442670632289
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+20: (7b) *(u64 *)(r10 -24) = r1       ; R1_w=32410442670632289 R10=fp0 fp-24_w=32410442670632289
+21: (18) r1 = 0x6e206425203a7075      ; R1_w=7935452654044082293
+23: (7b) *(u64 *)(r10 -32) = r1       ; R1_w=7935452654044082293 R10=fp0 fp-32_w=7935452654044082293
+24: (18) r1 = 0x6f7267632064253a      ; R1_w=8030594760997872954
+26: (7b) *(u64 *)(r10 -40) = r1       ; R1_w=8030594760997872954 R10=fp0 fp-40_w=8030594760997872954
+27: (18) r1 = 0x20737365636f7270      ; R1_w=2338339510832558704
+29: (7b) *(u64 *)(r10 -48) = r1       ; R1_w=2338339510832558704 R10=fp0 fp-48_w=2338339510832558704
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+30: (07) r7 += 2480                   ; R7_w=scalar()
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+31: (63) *(u32 *)(r10 -8) = r6        ; R6=P0 R10=fp0 fp-8=mmmm0000
+32: (bf) r1 = r10                     ; R1_w=fp0 R10=fp0
+; 
+33: (07) r1 += -8                     ; R1_w=fp-8
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+34: (b7) r2 = 4                       ; R2_w=4
+35: (7b) *(u64 *)(r10 -72) = r7       ; R7_w=scalar() R10=fp0 fp-72_w=mmmmmmmm
+36: (bf) r3 = r7                      ; R3_w=scalar(id=2) R7_w=scalar(id=2)
+37: (85) call bpf_probe_read#4        ; R0=scalar() fp-8=mmmmmmmm
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+38: (61) r1 = *(u32 *)(r10 -8)        ; R1_w=scalar(umax=4294967295,var_off=(0x0; 0xffffffff)) R10=fp0
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+39: (7b) *(u64 *)(r10 -64) = r1       ; R1_w=scalar(umax=4294967295,var_off=(0x0; 0xffffffff)) R10=fp0 fp-64_w=
+40: (7b) *(u64 *)(r10 -8) = r6        ; R6=P0 R10=fp0 fp-8_w=00000000
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+41: (7b) *(u64 *)(r10 -56) = r6       ; R6=P0 R10=fp0 fp-56_w=00000000
+42: (bf) r1 = r10                     ; R1_w=fp0 R10=fp0
+; 
+43: (07) r1 += -56                    ; R1_w=fp-56
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+44: (bf) r7 = r8                      ; R7_w=scalar(id=3) R8=scalar(id=3)
+45: (07) r7 += 248                    ; R7_w=scalar()
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+46: (b7) r2 = 8                       ; R2_w=8
+47: (bf) r3 = r7                      ; R3_w=scalar(id=4) R7_w=scalar(id=4)
+48: (85) call bpf_probe_read#4        ; R0_w=scalar() fp-56_w=mmmmmmmm
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+49: (79) r3 = *(u64 *)(r10 -56)       ; R3_w=scalar() R10=fp0
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+50: (07) r3 += 104                    ; R3_w=scalar()
+51: (bf) r1 = r10                     ; R1_w=fp0 R10=fp0
+; 
+52: (07) r1 += -8                     ; R1_w=fp-8
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+53: (b7) r2 = 8                       ; R2_w=8
+54: (85) call bpf_probe_read#4        ; R0=scalar() fp-8=mmmmmmmm
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+55: (79) r9 = *(u64 *)(r10 -8)        ; R9_w=scalar() R10=fp0
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+56: (7b) *(u64 *)(r10 -8) = r6        ; R6=P0 R10=fp0 fp-8_w=00000000
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+57: (7b) *(u64 *)(r10 -56) = r6       ; R6=P0 R10=fp0 fp-56_w=00000000
+58: (bf) r1 = r10                     ; R1_w=fp0 R10=fp0
+; 
+59: (07) r1 += -56                    ; R1_w=fp-56
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+60: (b7) r2 = 8                       ; R2_w=8
+61: (bf) r3 = r7                      ; R3_w=scalar(id=4) R7=scalar(id=4)
+62: (b7) r6 = 0                       ; R6_w=0
+63: (85) call bpf_probe_read#4        ; R0_w=scalar() fp-56_w=mmmmmmmm
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+64: (79) r3 = *(u64 *)(r10 -56)       ; R3_w=scalar() R10=fp0
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+65: (07) r3 += 16                     ; R3_w=scalar()
+66: (bf) r1 = r10                     ; R1_w=fp0 R10=fp0
+; 
+67: (07) r1 += -8                     ; R1_w=fp-8
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+68: (b7) r2 = 8                       ; R2_w=8
+69: (85) call bpf_probe_read#4        ; R0=scalar() fp-8=mmmmmmmm
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+70: (79) r5 = *(u64 *)(r10 -8)        ; R5_w=scalar() R10=fp0
+71: (bf) r1 = r10                     ; R1_w=fp0 R10=fp0
+; 
+72: (07) r1 += -48                    ; R1_w=fp-48
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ({ typeof(u64) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->id); _val; }), ({ typeof(const char *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&({ typeof(struct kernfs_node *) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->kn); _val; })->name); _val; })); });
+73: (b7) r2 = 32                      ; R2_w=32
+74: (79) r3 = *(u64 *)(r10 -64)       ; R3_w=scalar(umax=4294967295,var_off=(0x0; 0xffffffff)) R10=fp0
+75: (bf) r4 = r9                      ; R4_w=scalar(id=5) R9=scalar(id=5)
+76: (85) call bpf_trace_printk#6      ; R0_w=scalar()
+; int level = ({ typeof(int) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->level); _val; });
+77: (63) *(u32 *)(r10 -48) = r6       ; R6=P0 R10=fp0 fp-48=mmmm0000
+78: (bf) r1 = r10                     ; R1_w=fp0 R10=fp0
+; 
+79: (07) r1 += -48                    ; R1_w=fp-48
+; int level = ({ typeof(int) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->level); _val; });
+80: (bf) r3 = r8                      ; R3_w=scalar(id=3) R8=scalar(id=3)
+81: (07) r3 += 208                    ; R3_w=scalar()
+; int level = ({ typeof(int) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&cgroup->level); _val; });
+82: (b7) r2 = 4                       ; R2_w=4
+83: (85) call bpf_probe_read#4        ; R0=scalar() fp-48=mmmmmmmm
+; int result = bpf_probe_read_kernel(&ancient, sizeof(struct cgroup *), (void *)(cgroup->ancestors) + 1 * sizeof(struct cgroup*));
+84: (07) r8 += 1848                   ; R8_w=scalar()
+85: (bf) r1 = r10                     ; R1_w=fp0 R10=fp0
+; 
+86: (07) r1 += -8                     ; R1_w=fp-8
+; int result = bpf_probe_read_kernel(&ancient, sizeof(struct cgroup *), (void *)(cgroup->ancestors) + 1 * sizeof(struct cgroup*));
+87: (b7) r2 = 8                       ; R2_w=8
+88: (bf) r3 = r8                      ; R3_w=scalar(id=6) R8_w=scalar(id=6)
+89: (85) call bpf_probe_read_kernel#113       ; R0_w=scalar() fp-8=mmmmmmmm
+90: (67) r0 <<= 32                    ; R0_w=scalar(smax=9223372032559808512,umax=18446744069414584320,var_off=(0x0; 0xffffffff00000000),s32_min=0,s32_max=0,u32_max=0)
+91: (77) r0 >>= 32                    ; R0_w=scalar(umax=4294967295,var_off=(0x0; 0xffffffff))
+; if (result == 0) {
+92: (55) if r0 != 0x0 goto pc+27      ; R0_w=0
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ancient->kn->id, ancient->kn->name); });
+93: (18) r1 = 0x7325203a656d61        ; R1_w=32410442670632289
+95: (7b) *(u64 *)(r10 -24) = r1       ; R1_w=32410442670632289 R10=fp0 fp-24_w=32410442670632289
+96: (18) r1 = 0x6e206425203a7075      ; R1_w=7935452654044082293
+98: (7b) *(u64 *)(r10 -32) = r1       ; R1_w=7935452654044082293 R10=fp0 fp-32_w=7935452654044082293
+99: (18) r1 = 0x6f7267632064253a      ; R1_w=8030594760997872954
+101: (7b) *(u64 *)(r10 -40) = r1      ; R1_w=8030594760997872954 R10=fp0 fp-40_w=8030594760997872954
+102: (18) r1 = 0x20737365636f7270     ; R1_w=2338339510832558704
+104: (7b) *(u64 *)(r10 -48) = r1      ; R1_w=2338339510832558704 R10=fp0 fp-48_w=2338339510832558704
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ancient->kn->id, ancient->kn->name); });
+105: (63) *(u32 *)(r10 -56) = r6      ; R6=P0 R10=fp0 fp-56=mmmm0000
+106: (bf) r1 = r10                    ; R1_w=fp0 R10=fp0
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ancient->kn->id, ancient->kn->name); });
+107: (07) r1 += -56                   ; R1_w=fp-56
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ancient->kn->id, ancient->kn->name); });
+108: (b7) r2 = 4                      ; R2_w=4
+109: (79) r3 = *(u64 *)(r10 -72)      ; R3_w=scalar() R10=fp0
+110: (85) call bpf_probe_read#4       ; R0=scalar() fp-56=mmmmmmmm
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ancient->kn->id, ancient->kn->name); });
+111: (61) r3 = *(u32 *)(r10 -56)      ; R3_w=scalar(umax=4294967295,var_off=(0x0; 0xffffffff)) R10=fp0
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ancient->kn->id, ancient->kn->name); });
+112: (79) r1 = *(u64 *)(r10 -8)       ; R1_w=scalar() R10=fp0
+; ({ char _fmt[] = "process :%d cgroup: %d name: %s"; bpf_trace_printk_(_fmt, sizeof(_fmt), ({ typeof(pid_t) _val; __builtin_memset(&_val, 0, sizeof(_val)); bpf_probe_read(&_val, sizeof(_val), (u64)&task->pid); _val; }), ancient->kn->id, ancient->kn->name); });
+113: (79) r1 = *(u64 *)(r1 +248)
+R1 invalid mem access 'scalar'
+processed 106 insns (limit 1000000) max_states_per_insn 0 total_states 6 peak_states 6 mark_read 4
+
+Traceback (most recent call last):
+  File "/home/qiang/Development/bcc/Test.py", line 3, in <module>
+    bpf = BPF(src_file=__file__.replace(".py", ".c"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/bcc/__init__.py", line 483, in __init__
+    self._trace_autoload()
+  File "/usr/lib/python3.11/site-packages/bcc/__init__.py", line 1456, in _trace_autoload
+    fn = self.load_func(func_name, BPF.TRACEPOINT)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/bcc/__init__.py", line 522, in load_func
+    raise Exception("Failed to load BPF program %s: %s" %
+Exception: Failed to load BPF program b'tracepoint__sched__sched_process_exec': Permission denied
